@@ -6,13 +6,8 @@
   tasks:
 
 
-  - name: update repository index
-    dnf:
-      update_cache: true
-    when: ansible_distribution in ["Rocky Linux", "Centos"]
-
-  - name: install htop package
-    dnf:
+  - name: update repository index and install htop
+    package:
       name: htop
       state: latest
-    when: ansible_distribution == "Rocky Linux"
+      update_cache: true
